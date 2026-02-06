@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anis导航网</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="images/anis.jpg" alt="Anis Logo" class="logo-img">
+                <i class="fas fa-gamepad"></i>
+                <span>Anis</span>
+            </a>
+            
+            <!-- 桌面端导航菜单 -->
+            <ul class="nav-menu">
+                <li><a href="#home" class="active"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="#games"><i class="fas fa-gamepad"></i> 游戏</a></li>
+                <li><a href="#media"><i class="fas fa-film"></i> 媒体</a></li>
+                <li><a href="#social"><i class="fas fa-users"></i> 社交</a></li>
+                <li><a href="#anime"><i class="fas fa-tv"></i> 动漫</a></li>
+                <li><a href="#tools"><i class="fas fa-tools"></i> 工具</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> 联系我们</a></li>
+                <!-- 在现有导航菜单中添加搜索框 -->
+                <li class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="搜索网站..." autocomplete="off">
+                        <button id="searchBtn" aria-label="搜索">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                </li>
+            </ul>
+            
+            <!-- 汉堡菜单按钮 -->
+            <!-- 在汉堡菜单按钮后添加移动端搜索按钮 -->
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- 移动端搜索按钮 -->
+            <a href="#" class="mobile-search-btn" id="mobileSearchBtn">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <section class="hero">
+            <h1>发现世界</h1>
+            <p>汇聚全网资源，从游戏到动漫，从工具到社区，一站式导航服务</p>
+            
+            <!-- 分类标签 -->
+            <div class="category-tags">
+                <div class="category-tag active" data-category="all">全部</div>
+                <div class="category-tag" data-category="games">游戏</div>
+                <div class="category-tag" data-category="media">媒体</div>
+                <div class="category-tag" data-category="social">社交</div>
+                <div class="category-tag" data-category="anime">动漫</div>
+                <div class="category-tag" data-category="tools">工具</div>
+            </div>
+        </section>
+
+        <!-- 链接网格 -->
+        <section class="links-container">
+            <div class="container">
+                <div class="links-grid" id="linksGrid">
+                    <!-- 链接卡片将通过JavaScript生成 -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 在页面底部（footer前）添加移动端搜索弹窗 -->
+    <!-- 移动端搜索弹窗 -->
+    <div class="mobile-search-modal" id="mobileSearchModal">
+        <div class="mobile-search-box">
+            <div class="mobile-search-header">
+                <h3>搜索网站导航</h3>
+                <button class="mobile-search-close" id="mobileSearchClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <input type="text" class="mobile-search-input" id="mobileSearchInput" placeholder="搜索网站名称、描述或分类..." autocomplete="off">
+            <div class="mobile-search-results" id="mobileSearchResults"></div>
+        </div>
+    </div>
+
+        <!-- 智能滚动按钮 -->
+    <button id="scrollButton" class="scroll-button" aria-label="滚动到页面底部">
+        <i class="fas fa-chevron-down"></i>
+    </button>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="contact.html">联系我们</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="terms.html">使用条款</a>
+            </div>
+            <div class="copyright">
+                <p>© 2026 Anis导航网. 保留所有权利. 本网站仅供学习交流使用</p>
+                <p>Made with <i class="fas fa-heart" style="color: #ff6b9d;"></i>I Love Anis</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
