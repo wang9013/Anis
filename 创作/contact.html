@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 【Anis导航网】</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 联系我们页面专属样式 */
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .contact-header p {
+            font-size: 1.2rem;
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        /* 联系表单样式 */
+        .contact-form-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-form-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-form-container h2 i {
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+        }
+        
+        /* 联系信息样式 */
+        .contact-info-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-info-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-info-container h2 i {
+            color: var(--primary-color);
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.8rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .contact-details p {
+            color: var(--gray-color);
+            line-height: 1.6;
+        }
+        
+        .email-address {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 107, 157, 0.1);
+            color: var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 5px;
+            transition: var(--transition);
+        }
+        
+        .email-address:hover {
+            background: rgba(255, 107, 157, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .response-time {
+            background: rgba(45, 212, 191, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 2rem;
+        }
+        
+        .response-time h4 {
+            color: var(--dark-color);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .response-time p {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span>Anis</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> 联系我们</a></li>
+            </ul>
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主内容区域 -->
+    <main>
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>联系我们</h1>
+                <p>我们重视每一位用户的反馈。如果你有任何问题、建议或合作意向，请随时通过以下方式与我们取得联系。我们会在24小时内回复你的邮件。</p>
+            </div>
+            
+            <div class="contact-content">
+                <!-- 联系表单 -->
+                <div class="contact-form-container">
+                    <h2><i class="fas fa-paper-plane"></i> 发送消息</h2>
+                    <form id="contactForm" action="mailto:your-email@example.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">你的姓名 *</label>
+                            <input type="text" id="name" name="name" required placeholder="请输入你的姓名">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">你的邮箱 *</label>
+                            <input type="email" id="email" name="email" required placeholder="请输入你的邮箱地址，用于接收回复">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">主题 *</label>
+                            <input type="text" id="subject" name="subject" required placeholder="请简要概括你的问题或反馈">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">详细内容 *</label>
+                            <textarea id="message" name="body" required placeholder="请详细描述你的问题、建议或合作意向..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> 发送邮件
+                        </button>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--gray-color); text-align: center;">
+                            点击按钮将使用你的默认邮件客户端发送邮件
+                        </p>
+                    </form>
+                </div>
+                
+                <!-- 联系信息 -->
+                <div class="contact-info-container">
+                    <h2><i class="fas fa-info-circle"></i> 联系信息</h2>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>邮箱地址</h3>
+                            <p>对于一般咨询、问题反馈或网站建议，请直接通过上方的表单发送邮件，或复制以下地址：</p>
+                            <a href="mailto:your-email@example.com" class="email-address">
+                                <i class="fas fa-envelope"></i> quyongju098784@163.com
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>回复时间</h3>
+                            <p>我们会在工作日的24小时内回复所有邮件。周末或节假日收到的邮件，可能会在下一个工作日处理，敬请谅解。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>反馈类型</h3>
+                            <p>欢迎以下类型的反馈：网站链接错误或失效、推荐新的优质网站、网站使用问题、界面改进建议、广告与合作等。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="response-time">
+                        <h4><i class="fas fa-lightbulb"></i> 温馨提示</h4>
+                        <p>为了我们能更准确地理解并解决你的问题，请在邮件中尽可能详细地描述情况。如果是报告失效链接，请提供具体的网站名称和原链接地址。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 (与主页保持一致) -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="terms.html">服务条款</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+            <div class="copyright">
+                <p>© 2026 【Anis导航网】. 保留所有权利. 本网站仅供学习交流使用</p>
+                <p>Made with <i class="fas fa-heart" style="color: #ff6b9d;"></i> for the internet community</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航菜单交互 (与主页保持一致)
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        // 汉堡菜单切换
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // 点击导航链接关闭移动端菜单
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+        
+        // 响应式调整
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+        
+        // 表单提交前简单验证
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !email || !subject || !message) {
+                e.preventDefault();
+                alert('请填写所有必填字段（标记为*）');
+                return false;
+            }
+            
+            // 简单邮箱格式验证
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('请输入有效的邮箱地址');
+                return false;
+            }
+            
+            // 表单数据已准备好通过mailto发送
+            console.log('表单验证通过，准备发送邮件...');
+        });
+    </script>
+</body>
+</html>
